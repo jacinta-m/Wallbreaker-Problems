@@ -1,0 +1,28 @@
+class Solution {
+    public List<Integer> selfDividingNumbers(int left, int right) {
+        List<Integer> numbers = new ArrayList<Integer>();
+        for(int i=left; i<=right; ++i){
+            boolean isNum = selfdivde(i);
+            if(isNum){
+                numbers.add(i);
+            }
+        }
+        return numbers;
+    }
+    
+    public boolean selfdivde(int num){
+        int divider = num;
+        while(divider >= 1){
+            int remain = divider % 10;
+            if( remain ==0){
+                return false;
+            }
+            if(num % remain != 0){
+                return false;
+            }
+            divider /= 10;
+            
+        }
+     return true;   
+    } 
+}

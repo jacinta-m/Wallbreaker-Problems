@@ -1,0 +1,34 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()){
+            return false;
+        }
+        Map<Character,Integer> letters = new HashMap<Character, Integer>();
+
+        for(int i=0; i<s.length(); ++i){
+            if(!letters.containsKey(s.charAt(i))){
+                letters.put(s.charAt(i),1);
+            }
+            else{
+                int count = letters.get(s.charAt(i));
+                ++count;
+                letters.put(s.charAt(i),count);
+            }
+        }
+        
+        for(int i=0; i< t.length(); ++i){
+            if(!letters.containsKey(t.charAt(i))){
+                return false;
+            }
+            else{
+                int count = letters.get(t.charAt(i));
+                --count;
+                if(count <0){
+                    return false;
+                }
+                letters.put(t.charAt(i),count);
+            }
+        }
+        return true;
+    }
+}

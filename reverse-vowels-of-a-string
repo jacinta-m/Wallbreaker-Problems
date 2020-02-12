@@ -1,0 +1,39 @@
+class Solution {
+    public String reverseVowels(String s) {
+        char[] reverse = s.toCharArray();
+        HashSet<Character> vowels = new HashSet<Character>();
+        vowels.add('a');
+        vowels.add('A');
+        vowels.add('e');
+        vowels.add('E');
+        vowels.add('i');
+        vowels.add('I');
+        vowels.add('o');
+        vowels.add('O');
+        vowels.add('u');
+        vowels.add('U');
+        int start=0;
+        int end = s.length()-1; 
+        while(start <= end){
+            if(vowels.contains(reverse[start]) && vowels.contains(reverse[end])){
+                char temp = reverse[start];
+                reverse[start] = reverse[end];
+                reverse[end] = temp;
+                ++start;
+                --end;
+            }
+            else if(vowels.contains(reverse[start])){
+       --end;         
+            }
+            else if(vowels.contains(reverse[end])){
+                ++start;
+            }
+            else{
+                ++start;
+                --end;
+            }
+        }
+        String output = new String(reverse);
+        return output;
+    }
+}

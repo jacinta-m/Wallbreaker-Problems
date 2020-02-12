@@ -1,0 +1,18 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        HashSet<Integer> single = new HashSet<Integer>();
+        int number = -1;
+        for(int i=0; i<nums.length; ++i){
+            if(!single.contains(nums[i])){
+                single.add(nums[i]);
+            }
+            else{
+                single.remove(nums[i]);
+            }
+        }
+        for(int value: single){
+            number = value;
+        }
+        return number;
+    }
+}

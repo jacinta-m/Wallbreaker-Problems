@@ -1,0 +1,50 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+       boolean nines = true;
+       int last = digits.length-1;
+       int sum = 1;
+       int carry = 0;
+        for(int i=0; i<digits.length; ++i){
+            if(digits[i] != 9){
+                nines = false;
+            }
+        }
+        if(nines == false){
+            if(digits[last] != 9){
+                digits[last] = digits[last] +sum;
+                return digits;
+            }
+            else{
+                for(int i= last; i>=0; i--){
+                    if(sum==0 && carry==0){
+                        return digits;
+                    }
+                    if(sum == 1){
+                        carry = (digits[i] +sum)/10;
+                        digits[i] = (digits[i] +sum)%10;
+                        --sum;
+                    }
+                    else{
+                        int temp = (digits[i] + carry)/10;
+                        digits[i] = (digits[i]+ carry)%10;
+                        --carry;
+                        carry = temp;
+                    }
+                }                
+            }
+        }
+        else{//all nines
+            int [] digits1 = new int[digits.length +1];
+            for(int i: digits1){
+                if(i ==0){
+                    digits1[i]=1;
+                }
+                else{
+                    digits1[i]=0;
+                }
+            }
+            return digits1;
+        }
+        return digits;
+    }
+}
