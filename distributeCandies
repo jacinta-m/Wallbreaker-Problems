@@ -1,0 +1,12 @@
+class Solution {
+    public int distributeCandies(int[] candies) {
+        HashSet<Integer> sister = new HashSet<Integer>();
+        for(int i=0; i<candies.length; ++i){
+            if(!sister.contains(candies[i]) ){
+                sister.add(candies[i]);
+            }
+        }
+        int count = Math.min(sister.size(), candies.length/2);
+        return count;
+    }
+}
